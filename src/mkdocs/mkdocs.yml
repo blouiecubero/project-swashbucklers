@@ -7,3 +7,6 @@ theme:
     accent: indigo
 pages:
     - Home: index.md
+    - Coding Convention: coding_conventions/front_end_convention.md
+    - Design Docs: 
+      - Infra Chart: design_docs/infra_chart.md
