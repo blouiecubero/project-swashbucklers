@@ -1,0 +1,9 @@
+site_name: Project Swashbucklers
+copyright: 'copyright © Swashbucklers Inc., All rights reserved.'
+theme:
+  name: 'material'
+  palette:
+    primary: indigo
+    accent: indigo
+pages:
+    - Home: index.md

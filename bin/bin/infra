@@ -1,0 +1,80 @@
+#! /bin/bash
+echo '
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+                              Infra Commands
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+                Select from the following set of commands:
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+                                DESCRIPTIONS
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+1) Terraform Init           => Initialize terraform
+2) Terraform Plan           => Check cloud resources
+3) Terraform Apply          => Apply all resources
+4) Terraform Destroy        => Destroy all resources
+5) Staging Migration/Acl    => Runs staging db migration and acl update
+6) Production Migration/Acl => Runs production db migration and acl update
+7) Staging DB Connect       => Connect to Staging RDS instance
+8) Production DB Connect    => Connect to Production RDS instance
+9) Back                     => Return to bin/gss panel
+10) Quit                     => Close the panel
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+'
+PS3='Please enter the number of your choice: '
+infra[0]="Terraform Init"
+infra[1]="Terraform Plan"
+infra[2]="Terraform Apply"
+infra[3]="Terraform Destroy"
+infra[4]="Staging Migration/Acl"
+infra[5]="Production Migration/Acl"
+infra[6]="Staging DB Connect"
+infra[7]="Production DB Connect"
+infra[8]="Back"
+infra[9]="Quit"
+cd `dirname $0`/../../
+select opt in "${infra[@]}"
+do
+    case $opt in
+        "Terraform Init")
+            bash ops/terraform/bin/init
+            break
+            ;;
+        "Terraform Plan")
+            bash ops/terraform/bin/plan
+            break
+            ;;
+        "Terraform Apply")
+            bash ops/terraform/bin/apply
+            break
+            ;;
+        "Terraform Destroy")
+            bash ops/terraform/bin/destroy
+            break
+            ;;
+        "Staging Migration/Acl")
+            bash ops/aws/bin/staging_db_migration_acl
+            break
+            ;;
+        "Production Migration/Acl")
+            bash ops/aws/bin/production_db_migration_acl
+            break
+            ;;
+        "Staging DB Connect")
+            bash ops/aws/bin/staging_db_connect
+            break
+            ;;
+        "Production DB Connect")
+            bash ops/aws/bin/production_db_connect
+            break
+            ;;
+        "Back")
+            bash bin/gss
+            break
+            ;;
+        "Quit")
+            break
+            ;;
+        *) echo "invalid option $REPLY";;
+    esac
+done

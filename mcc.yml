@@ -1,0 +1,36 @@
+---
+schema_version: v1.1.0
+timezone: Asia/Tokyo
+widgets:
+  - id: mkdocs
+    type: menu
+    title: MKDOCS
+    content:
+      - category: mkdocs
+        name: Mkdocs serve
+        description: Build and run mkdocs container
+        command: ops/docker/mkdocs/bin/serve
+      - category: mkdocs
+        name: PlantUML
+        description: Create PNG from MD
+        command: ops/docker/bin/plantuml/create_image
+      - category: mkdocs
+        name: Mkdocs build
+        description: Build css, html, js files
+        command: ops/docker/mkdocs/bin/build
+      - category: mkdocs
+        name: Mkdocs logs 
+        description: Show container logs
+        command: ops/docker/mkdocs/bin/logs
+   
+layout:
+  - name: DASHBOARD
+    rows:
+      - height: 100%
+        cols:
+          - width: 6
+            stacks:
+              - id: mkdocs
+                height: 100%
+
+
