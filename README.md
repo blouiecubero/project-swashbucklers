@@ -1,4 +1,4 @@
-# Welcome to Project Swashbuckers
+# Welcome to Project Swashbucklers
 
 ## Procedures
 
